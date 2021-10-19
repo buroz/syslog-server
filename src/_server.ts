@@ -1,7 +1,7 @@
 import dgram from "dgram";
 import EventEmitter from "events";
 
-let messages = {
+const messages = {
   ALREADY_RUNNING: "Server is already running!",
   FAILED_TO_START: "Server failed to start!",
   SERVER_NOT_RUNNING: "Server is not running!"
