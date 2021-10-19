@@ -49,14 +49,14 @@ export default class Server extends EventEmitter {
         this.server.on("error", (err: any) => this.emit("error", err));
 
         this.server.on("message", (msg: Buffer, remote: dgram.RemoteInfo) => {
-          let info = msg.toString("utf8").split(",");
+          const info = msg.toString("utf8").split(",");
 
           /*
             Regexp ile düzenleme gelecek
             Tam olarak toplamamız gereken bilgilerin listesini interface yapacağız
             Sonra ver gülüm yansın
           */
-          let message = {
+          const message = {
             date: new Date(
               Date.now() - new Date().getTimezoneOffset() * 60 * 1000
             ),
@@ -78,7 +78,7 @@ export default class Server extends EventEmitter {
 
         this.server.bind(options, (err: any) => {
           if (err) {
-            let errorObj = this.createErrorObject(
+            const errorObj = this.createErrorObject(
               err,
               messages.FAILED_TO_START
             );
@@ -99,7 +99,7 @@ export default class Server extends EventEmitter {
           return resolve();
         });
       } catch (err) {
-        let errorObj = this.createErrorObject(messages.FAILED_TO_START, err);
+        const errorObj = this.createErrorObject(messages.FAILED_TO_START, err);
         return reject(errorObj);
       }
     });
